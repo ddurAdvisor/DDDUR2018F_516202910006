@@ -16,11 +16,11 @@ void favorUI(){
  fill(255,180);
  rect(choicefirst+30,375,160,40,8);
  fill(#8888b5);
- textFont(font);
- textSize(20);
- text("PLACE",240,50);
+ //textFont(font);
+ //textSize(20);
  textFont(font2);
  textSize(15);
+ 
 if (gender == 0 && degree ==0){
        text("性 别    学 历",choicefirst+60,400);
       }else if (gender == 1 && degree == 0){

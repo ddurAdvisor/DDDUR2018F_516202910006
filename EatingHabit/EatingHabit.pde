@@ -42,9 +42,11 @@ float Xrect = 32;
 float thickness = 3; 
 int count = 10;
 Orbiter[][] orbiters = new Orbiter[6][count];
-float[] placeindex = new float[6];
+float[] placeindex = new float[6]; 
 float[] newplaceindex = new float[6];
 int[][] sixplace = {{300,400},{570,440},{420,220},{150,200},{700,480},{800,200}};
+float xball=600;
+
 
 void setup(){
   size(1000,600);
@@ -53,7 +55,7 @@ void setup(){
   cp5 = new ControlP5(this);
   
   font = createFont("Poppins-Bold.ttf",32);
-  font2 = createFont("PingFang.ttc",32);
+  font2 = createFont("GBK.TTF",32);
   
  
   table = loadTable("favor.csv","header");
@@ -85,7 +87,9 @@ void draw(){
   }else if (pagehint == 3){
     page3();
   }else if (pagehint == 4){
-    page4();}
+    page4();
+  }else if (pagehint == 5){
+    page5();}
   
    if (pagehint != 4 && pagehint != 0){
     menuUI();
@@ -121,9 +125,38 @@ void page0(){
     fill(255,100);
     rect(420,460,160,50,10);
     if (mousePressed){
-      pagehint = 1;
+      pagehint = 5;
     }
   }
+}
+
+void page5(){
+  fill(#3c3c3c);
+  rect(0,0,width,height);
+  fill(#ffc7c7,30);
+  noStroke();
+  rect(30,30,330,50,8);
+  rect(30,355,300,290,8);
+  
+  textFont(font2);
+  textSize(42);
+  //text("饮食口味、用餐时间、用餐地点呈现交大师生饮食习惯",340,200);
+  text("UNLOCKING...",605,290);
+  fill(#ffc7c7);
+  textFont(font2);
+  textSize(15);
+  text("# 菜单栏 #",135,105);
+  text("# 师生分类选择框 #",135,340);
+  stroke(#ffc7c7);
+  strokeWeight(2);
+  line(600,380,900,380);
+  fill(255);
+  noStroke();
+  xball = xball+(900-xball)*0.01;
+  ellipse(xball,380,20,20);
+ 
+  if (890 <= xball){
+  pagehint = 1;}
 }
 
 void page1(){
@@ -300,15 +333,14 @@ void page2(){
   stroke(235);
   strokeWeight(2);
   line(mouseX,startY+lengthY,mouseX,height);
-  stroke(#ffc7c7);
   fill(#ffc7c7);
   //line(100,250,200,250);
   textFont(font2);
-  textSize(15);
-  text("用 餐 高 峰 期",150,145);
+  textSize(13);
+  text("用 餐 高 峰 期",650,533);
   textFont(font);
-  textSize(32);
-  text("PEAK TIME",150,180);
+  textSize(25);
+  text("PEAK TIME",650,550);
   }
   }
 }
